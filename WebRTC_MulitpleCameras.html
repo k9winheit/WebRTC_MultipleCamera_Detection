@@ -1,0 +1,60 @@
+<head>
+
+</head>
+<html>
+
+
+<script src="https://rtcmulticonnection.herokuapp.com/dist/RTCMultiConnection.min.js"></script>
+<script src="https://rtcmulticonnection.herokuapp.com/socket.io/socket.io.js"></script>
+
+<script>
+    var connection = new RTCMultiConnection();
+
+    // this line is VERY_important
+    connection.socketURL = 'http://localhost:9001/';
+
+    // if you want audio+video conferencing
+    connection.session = {
+        audio: true,
+        video: true
+    };
+
+    connection.DetectRTC.load(function () {
+        var secondaryCamera = DetectRTC.videoInputDevices[1];
+        // if (!secondaryCamera) {
+        //     alert('Please attach another camera device.');
+        //     return;
+        // }
+
+        console.log("Camera Name : " + secondaryCamera.label);
+        console.log("Camera Id : " + secondaryCamera.id);
+
+      connection.mediaConstraints = {
+        audio: true,
+        video: {
+            mandatory: {},
+            optional: [{
+                sourceId: secondaryCamera.id
+            }]
+        }
+    };
+
+        // if (DetectRTC.browser.name === 'Firefox') {
+        //     connection.mediaConstraints = {
+        //         audio: true,
+        //         video: {
+        //             deviecId: secondaryCamera.id
+        //         }
+        //     };
+        // }
+    });
+
+    function myFunction() {
+        connection.open('Test');
+    }
+
+
+</script>
+<button id="joinRoom" onclick="myFunction()">Join Room</button>
+
+</html>
