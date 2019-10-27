@@ -1,0 +1,15 @@
+- - - - - ScreenId - - - - - - -  -
+https://github.com/muaz-khan/RTCMultiConnection/wiki
+https://www.webrtc-experiment.com/getScreenId/
+https://github.com/muaz-khan/getScreenId
+https://github.com/muaz-khan/Chrome-Extensions/tree/master/desktopCapture
+https://github.com/muaz-khan/Chrome-Extensions/tree/master/desktopCapture
+
+- - - - - Electron - - - -  -
+https://github.com/mozilla/positron-electron/blob/master/docs/api/screen.md
+https://electronjs.org/docs/api/web-contents
+
+- - - - - -  Angular with Electron- - - - - - --
+https://coursetro.com/posts/code/125/Angular-5-Electron-Tutorial
+https://malcoded.com/posts/angular-desktop-electron/
+https://thorsten-hans.com/integrating-angular-and-electron-using-ngx-electron
