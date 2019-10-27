@@ -1,0 +1,42 @@
+<head>
+
+</head>
+<html>
+
+
+<script src="https://cdn.WebRTC-Experiment.com/getScreenId.js"></script>
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+
+<script>
+    function myFunction() {
+        getScreenId(function (error, sourceId, screen_constraints) {
+            // error    == null || 'permission-denied' || 'not-installed' || 'installed-disabled' || 'not-chrome'
+            // sourceId == null || 'string' || 'firefox'
+            debugger;
+            console.log("Screen Id : " + screen_constraints.video);
+
+            if (navigator.userAgent.indexOf('Edge') !== -1 && (!!navigator.msSaveOrOpenBlob || !!navigator.msSaveBlob)) {
+                navigator.getDisplayMedia(screen_constraints).then(stream => {
+                    document.getElementById('sharescreen').srcObject = stream;
+                }, error => {
+                    alert('Please make sure to use Edge 17 or higher.');
+                });
+                return;
+            }
+
+            navigator.mediaDevices.getUserMedia(screen_constraints).then(function (stream) {
+                document.getElementById('sharescreen').srcObject = stream;
+
+                // share this "MediaStream" object using RTCPeerConnection API
+            }).catch(function (error) {
+                console.error(error);
+            });
+        });
+    }
+
+</script>
+
+<button id="joinRoom" onclick="myFunction()">Join Room</button>
+<video id="sharescreen" controls style="height: 500px;width: 500px;"></video>
+
+</html>
